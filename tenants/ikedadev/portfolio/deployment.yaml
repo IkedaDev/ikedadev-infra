@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ikeda-portfolio
+  namespace: ikedadev-apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ikeda-portfolio
+  template:
+    metadata:
+      labels:
+        app: ikeda-portfolio
+    spec:
+      containers:
+      - name: web
+        image: ikedaharket/ikeda-portfolio:latest # Imagen para ARM64
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
