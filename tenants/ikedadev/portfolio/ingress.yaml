@@ -12,7 +12,7 @@ spec:
   tls:
   - hosts:
     - me.ikedadev.com
-    secretName: me.ikedadev-com-tls 
+    secretName: me-ikedadev-com-tls 
   rules:
   - host: me.ikedadev.com
     http:
