@@ -11,35 +11,27 @@ spec:
   template:
     metadata:
       labels:
-        app: ilogger-api # Etiqueta autorizada para hablar con Mongo
+        app: ilogger-api
     spec:
       containers:
       - name: ilogger-api
+        # USAMOS TU IMAGEN REAL
         image: ikedaharket/ilogger:latest
+        imagePullPolicy: Always
         ports:
-        - containerPort: 3000
+        - containerPort: 3000 # El puerto que expone tu Dockerfile
         env:
-        - name: MONGO_URI
+        - name: DATABASE_URL
           valueFrom:
             secretKeyRef:
-              name: ilogger-api-secrets # El secreto que generó Sealed Secrets
+              name: ilogger-api-secrets
               key: mongo-uri
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "100m"
-          limits:
-            memory: "256Mi"
-            cpu: "300m"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: ilogger-api-svc
-  namespace: ilogger-system
-spec:
-  selector:
-    app: ilogger-api
-  ports:
-  - port: 80
-    targetPort: 3000
+        - name: LOGGER_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: ilogger-api-secrets
+              key: api-key
+        - name: PORT
+          value: "3000"
+        - name: NODE_ENV
+          value: "production"
