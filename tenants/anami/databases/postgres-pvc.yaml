@@ -6,7 +6,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: longhorn # Usamos el almacenamiento de Longhorn
+  storageClassName: longhorn # Usamos tu SSD de 256GB gestionado por Longhorn
   resources:
     requests:
       storage: 5Gi
