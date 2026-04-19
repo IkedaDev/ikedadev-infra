@@ -4,7 +4,7 @@ metadata:
   name: ilogger-api
   namespace: ilogger-system
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: ilogger-api
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: ilogger-api
-        image: ikedadev/ilogger-api:latest
+        image: ikedaharket/ilogger:latest
         ports:
         - containerPort: 3000
         env:
