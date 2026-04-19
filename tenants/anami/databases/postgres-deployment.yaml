@@ -22,28 +22,22 @@ spec:
         - name: POSTGRES_USER
           valueFrom:
             secretKeyRef:
-              name: postgres-db-secrets # Nombre que genera Sealed Secrets
+              name: postgres-db-secrets
               key: username
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
               name: postgres-db-secrets
               key: password
+        # NUEVO: Indicamos a Postgres la subcarpeta exacta de datos
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
         volumeMounts:
         - name: postgres-storage
           mountPath: /var/lib/postgresql/data
+          # NUEVO: Esto crea y usa la subcarpeta 'pgdata' en el SSD, ignorando el 'lost+found'
+          subPath: pgdata
       volumes:
       - name: postgres-storage
         persistentVolumeClaim:
           claimName: postgres-data-pvc
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: postgres-svc
-  namespace: anami-masoterapia
-spec:
-  ports:
-  - port: 5432
-  selector:
-    app: postgres
