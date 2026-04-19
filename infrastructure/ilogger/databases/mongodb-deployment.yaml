@@ -5,7 +5,7 @@ metadata:
   namespace: ilogger-system
 spec:
   strategy:
-    type: Recreate # VITAL: Apaga el viejo antes de encender el nuevo
+    type: Recreate # Mantenemos esto para evitar bloqueos de disco en la Pi
   selector:
     matchLabels:
       app: ilogger-mongodb
@@ -15,7 +15,19 @@ spec:
         app: ilogger-mongodb
     spec:
       securityContext:
-        fsGroup: 999 # Usuario estándar de MongoDB
+        fsGroup: 999
+      # --- ESTA ES LA SECCIÓN CLAVE ---
+      initContainers:
+      - name: fix-keyfile-permissions
+        image: busybox
+        # Copiamos la llave a un volumen compartido y le damos permisos 400 y dueño 999
+        command: ["sh", "-c", "cp /tmp/raw-key/mongodb-keyfile /etc/mongo-key/mongodb-keyfile && chmod 400 /etc/mongo-key/mongodb-keyfile && chown 999:999 /etc/mongo-key/mongodb-keyfile"]
+        volumeMounts:
+        - name: raw-keyfile-volume
+          mountPath: /tmp/raw-key
+        - name: fixed-keyfile-volume
+          mountPath: /etc/mongo-key
+      # --------------------------------
       containers:
       - name: mongodb
         image: mongo:6.0
@@ -24,7 +36,7 @@ spec:
           - "--replSet"
           - "rs0"
           - "--keyFile"
-          - "/etc/mongo-key/mongodb-keyfile"
+          - "/etc/mongo-key/mongodb-keyfile" # Apuntamos al archivo corregido
         ports:
         - containerPort: 27017
         env:
@@ -39,17 +51,20 @@ spec:
         - name: mongodb-storage
           mountPath: /data/db
           subPath: mongodb-data
-        - name: keyfile-volume
+        # Montamos el volumen con la llave ya corregida
+        - name: fixed-keyfile-volume
           mountPath: /etc/mongo-key
-          readOnly: true
       volumes:
       - name: mongodb-storage
         persistentVolumeClaim:
           claimName: mongodb-data-pvc
-      - name: keyfile-volume
+      # Volumen origen (el secreto de Kubernetes)
+      - name: raw-keyfile-volume
         secret:
           secretName: mongodb-key-secret
-          defaultMode: 0400 # Solo lectura para el usuario 999
+      # Volumen destino (temporal en memoria para la llave corregida)
+      - name: fixed-keyfile-volume
+        emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
