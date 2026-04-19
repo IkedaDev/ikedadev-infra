@@ -12,12 +12,14 @@ spec:
       labels:
         app: ilogger-mongodb
     spec:
+      strategy:
+        type: Recreate
       securityContext:
         fsGroup: 999
       containers:
       - name: mongodb
         image: mongo:6.0
-        command: ["mongod", "--bind_ip_all", "--replSet", "rs0"]
+        args: ["--bind_ip_all", "--replSet", "rs0"]
         ports:
         - containerPort: 27017
         env:
