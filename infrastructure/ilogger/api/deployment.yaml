@@ -15,11 +15,10 @@ spec:
     spec:
       containers:
       - name: ilogger-api
-        # USAMOS TU IMAGEN REAL
         image: ikedaharket/ilogger:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 3000 # El puerto que expone tu Dockerfile
+        - containerPort: 3000
         env:
         - name: DATABASE_URL
           valueFrom:
@@ -35,3 +34,10 @@ spec:
           value: "3000"
         - name: NODE_ENV
           value: "production"
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "300m"
+            memory: "256Mi"
