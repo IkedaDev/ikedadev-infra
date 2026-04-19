@@ -1,0 +1,19 @@
+{
+  "kind": "SealedSecret",
+  "apiVersion": "bitnami.com/v1alpha1",
+  "metadata": {
+    "name": "mongodb-secrets",
+    "namespace": "ilogger-system"
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "name": "mongodb-secrets",
+        "namespace": "ilogger-system"
+      }
+    },
+    "encryptedData": {
+      "mongodb-root-password": "AgBklA5xdcvCQWYKLqgSt8yzjnnVEAO42B5yxtR2Es0eY76xffq2S+HeU15dYM0PL5Z5ryLbA7wc1gww8U3QbDeocSSBv0IlWEBayGeWFaHUYT2u31AeE2tH38UxeeqhnLqtL3xJERA/uk1x/a8DTUkZaH3r33ROpneK2QszHqWTby5Mph/prqrPKrP2bJuApdH5AYDgqNtuDu8Wr9w8c89qycx4Ib86Mah15SDB/OQWQlDkcVJUiDEdWsjYg1w7AfVUokHhQcgPAHhEF0z2wKI93oG7CfWfG/iQnRk/H+kugW5srZWCoFxKBWwS3ghRz3GKDf+3cMd0SBOTQL5aDzGdYoevOYgeOw2/21SCVCvXw8vmL9JxfgFzvRV14TBzL3otAXHxIPQv7V1Pd94rIHjPtgVAEX4fviEbSwhy6puCuN9F9xqbmK3Obxj55zEYNZl6Xj7uFMCilrRx6SPD6Chk2k8pfoQ3Phm2WKxHZ++XoCf08/jIVx1+oKr3bd2aOWIcL2vgxfYr1t22zxDNyL2ineZ3P1nthnIM1SoH169+rR2S6UpISxWTqFlvxz2N6c6TlIAKRUuUyuRTH1it0LlbjrGd4FYmNRC6/JHC49HXZJb3g1A6S2ePmzLoBi+0zC8IEcZXX+mlAhPrCoAR7ZSlMNSrAoMuxEzbPA9e+Ex8esawIgNMZwZNWguk9BlOBz29gGa7qKYSBqnVvdAe"
+    }
+  }
+}

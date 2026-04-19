@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: mongodb-isolation-policy
+  namespace: ilogger-system
+spec:
+  podSelector:
+    matchLabels:
+      app: ilogger-mongodb # Afecta a MongoDB
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: ilogger-api # SOLO permite tráfico si el Pod tiene esta etiqueta
+    ports:
+    - protocol: TCP
+      port: 27017
