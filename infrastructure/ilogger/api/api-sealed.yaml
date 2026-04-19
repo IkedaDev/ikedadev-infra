@@ -1,0 +1,19 @@
+{
+  "kind": "SealedSecret",
+  "apiVersion": "bitnami.com/v1alpha1",
+  "metadata": {
+    "name": "ilogger-api-secrets",
+    "namespace": "ilogger-system"
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "name": "ilogger-api-secrets",
+        "namespace": "ilogger-system"
+      }
+    },
+    "encryptedData": {
+      "mongo-uri": "AgDEN2oHV4IPRZtq2VHie/2TB+Ridsr/JAD4DK4oni3kRhWbKFjU3JVAOS0j1VtrVBPM6jQY0y9xWmJnehS66tnku9yMRJ9XCe7mTOB5ZlO0IVfavWtcH4Bw6MNEraavH3t83c+FfDWggPdA7C/pR9EBBWrH55WoV/AmIrAKI6apTLckVfzgAN0++r+jaY3hDZp1N+LXE0J8KV4mAw9MLC/dC+IHWNFCHRKi9quh8hZABcuRq8wIp6xabCvBS8uVc/sNAl+2Yook8pB9RqMdTR7EXAFMt7KKH/PFYB+phGe2wZkE6lS/aU8JtnDQz3XQykbQb1wahWhMFDqQyciUQiQ93aYqvaMlBL6WdCurtwyXwKlzm6xq1pv3zCJRnREc/R1H9wMFwDhQ9N4k+Enq8EnyxAq/VX9O6QNb3nHH+EqIVt2E+HPRxSwGm2o1NZqj3nLjOw5UKCH27FZ77UeMSWO2sPUAj8GtBJTr5Y0LEU18SDNEB7Lo1AvbLOkRfRi2JIHABLoqObhsYCQVp2RrCZhBm0MQuhx1pyzL8k6J9dJUv6NuWpHevSNRiy7FFlbDkBbFCcc/XaJkQRAXrnZTkE36/638I8BrKqfNNzNzvD7/hOLmUsagv+5UaGHlJJD/8S5C02FF8Kayoz6uOwMHL7Avx4E0BuOdEqKJ+ljypJ/t7lHQCFCkCnHw0EAkd3lHlD4D1XsLzMymTLLcI1rwK1wu+vccJFqNpdW8AFXBAJoXMPnPDKPpcsfidLlo10YxL15jms9joNVEugr2xy5tme/x+8jHbnvbZkqTSqCDwKr290BRA4yM2wgVDRzfa7TRHWhdaqhM0bjMbssoir2MjA=="
+    }
+  }
+}
