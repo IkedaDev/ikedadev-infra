@@ -47,7 +47,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres-db-svc
+  name: postgres-svc
   namespace: anami-masoterapia
 spec:
   selector:
