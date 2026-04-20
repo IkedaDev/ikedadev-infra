@@ -41,3 +41,16 @@ spec:
           limits:
             cpu: "300m"
             memory: "256Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ilogger-api-svc
+  namespace: ilogger-system
+spec:
+  selector:
+    app: ilogger-api # Este "imán" debe coincidir exactamente con el label del Deployment
+  ports:
+    - protocol: TCP
+      port: 80        # El puerto por el que se comunicarán los demás (interno)
+      targetPort: 3000 # El puerto real donde escucha tu código Node.js (según tu Dockerfile)
