@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: anami-backend
+  namespace: anami-masoterapia
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: anami-backend
+  template:
+    metadata:
+      labels:
+        app: anami-backend
+    spec:
+      # Este contenedor corre ANTES que la app para actualizar la DB
+      initContainers:
+      - name: prisma-migrate
+        image: ikedaharket/anami-backend:latest
+        command: ["npx", "prisma", "migrate", "deploy"]
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: anami-backend-secrets
+              key: database-url
+      containers:
+      - name: backend
+        image: ikedaharket/anami-backend:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: anami-backend-secrets
+              key: database-url
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: anami-backend-secrets
+              key: jwt-secret
+        - name: LOGGER_SERVICE_URL
+          value: "http://ilogger-api-svc.ilogger-system.svc.cluster.local/v1/ingest" # URL Interna
+        - name: LOGGER_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: anami-backend-secrets
+              key: logger-api-key
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: anami-backend-svc
+  namespace: anami-masoterapia
+spec:
+  selector:
+    app: anami-backend
+  ports:
+  - port: 80
+    targetPort: 3000
