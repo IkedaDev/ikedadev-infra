@@ -43,3 +43,16 @@ spec:
       - name: postgres-storage
         persistentVolumeClaim:
           claimName: postgres-data-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-db-svc
+  namespace: anami-masoterapia
+spec:
+  selector:
+    app: postgres # Este imán debe coincidir con la etiqueta en tu deployment.yaml
+  ports:
+    - protocol: TCP
+      port: 5432       # El puerto que usarán tus apps para conectarse
+      targetPort: 5432 # El puerto real donde escucha PostgreSQL dentro del contenedor
