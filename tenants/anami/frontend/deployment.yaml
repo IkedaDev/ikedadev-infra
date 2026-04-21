@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: anami-frontend
+  namespace: anami-masoterapia
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: anami-frontend
+  template:
+    metadata:
+      labels:
+        app: anami-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: ikedaharket/anami-frontend:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: anami-frontend-svc
+  namespace: anami-masoterapia
+spec:
+  selector:
+    app: anami-frontend
+  ports:
+  - port: 80
+    targetPort: 80
