@@ -3,13 +3,13 @@
   "apiVersion": "bitnami.com/v1alpha1",
   "metadata": {
     "name": "postgres-db-secrets",
-    "namespace": "anami-masoterapia"
+    "namespace": "anami-masoterapia-prod"
   },
   "spec": {
     "template": {
       "metadata": {
         "name": "postgres-db-secrets",
-        "namespace": "anami-masoterapia"
+        "namespace": "anami-masoterapia-prod"
       }
     },
     "encryptedData": {

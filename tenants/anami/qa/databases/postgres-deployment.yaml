@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres-db
-  namespace: anami-masoterapia
+  namespace: anami-masoterapia-qa
 spec:
   replicas: 1
   selector:
@@ -48,7 +48,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: postgres-svc
-  namespace: anami-masoterapia
+  namespace: anami-masoterapia-qa
 spec:
   selector:
     app: postgres # Este imán debe coincidir con la etiqueta en tu deployment.yaml

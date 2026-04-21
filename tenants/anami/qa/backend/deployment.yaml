@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: anami-backend
-  namespace: anami-masoterapia
+  namespace: anami-masoterapia-qa
 spec:
   replicas: 1
   strategy:
@@ -54,7 +54,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: anami-backend-svc
-  namespace: anami-masoterapia
+  namespace: anami-masoterapia-qa
 spec:
   selector:
     app: anami-backend

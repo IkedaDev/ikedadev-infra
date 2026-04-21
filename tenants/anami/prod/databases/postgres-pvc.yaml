@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-data-pvc
+  namespace: anami-masoterapia-prod
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn # Usamos tu SSD de 256GB gestionado por Longhorn
+  resources:
+    requests:
+      storage: 5Gi

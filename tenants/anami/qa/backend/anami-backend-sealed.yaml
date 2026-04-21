@@ -3,7 +3,7 @@ apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
   name: anami-backend-secrets
-  namespace: anami-masoterapia
+  namespace: anami-masoterapia-qa
 spec:
   encryptedData:
     database-url: AgB867yjaoR1YvRBrNm/jDGRpo35NpyyfZExqJYxZp5wXvf6NZJ5nRtyBZhYLavZkN344RaEB5b/0JVZLQHiVsC9gY+gaSkxZYl9ylJ2MB8c1tCUurlSz6ZFa99d6/jEJH9DFyf6oYT9EW5SWgyIDU4wkumlyObWbDX+jDyzeFgMG4PIsIRqliGNZwI6cbo5hOUEoCebzySTn2FmffiE/ffp3pRxDDdMt/bvSEvtc3zxIUPnJGkmWYnYfj/IZ3DYt4bKYtAvIViMtLhjWHmWAWVp7SacEEbUaD10nyfX82+qoOh6NinooNd0Lvi/LtYsEDFunkNc7FrJpVbGa+hsDDvy/eCwjkbvZF8O90JCJvRYbGjgg592GVJL/t33sPUB0e2/Mx+qGrhub0f0jqKVJeSQSGtEq+KVDYEa1XpHlXis0eLF4xNT/Mgfn0Y+kfGSI9peHiulrBM1po+3yauiMEQEZZ8w1sJEkHrvzpun7Yqr/QJah8sSncy5DBR5pOIdYQ4jt4wHw3FAjAx3dqm1JYBaSsELrFx2JOQbhgS+TpEdo6o5bk6nS20ZkNX3Ed3Jw31XQJyr+ousmhrIFu+mnM66UhBi1/XrkRowXizcfHK3fKDhAdOJIiP7d337PQO78dljXP9oYwhO/FbPfz4qoF4ug4jz1VmsWRuAZlnWzh1LOaT8LhLTT3CDMWkGtQ0BrIVQqKKhZzUIoSgNdILywKxzkYqxC92l3Ycn/+384tT3PJnPhxpNNsa6WE56Rd8Bv9p7pg17RV/FmDGXJaGgAz6JUDXBNoHfpb5Fnx+wNiRjM8LA26RWgvImHtZY0ke9uA==
@@ -12,4 +12,4 @@ spec:
   template:
     metadata:
       name: anami-backend-secrets
-      namespace: anami-masoterapia
+      namespace: anami-masoterapia-qa

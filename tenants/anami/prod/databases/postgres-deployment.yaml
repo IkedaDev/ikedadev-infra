@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-db
+  namespace: anami-masoterapia-prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      securityContext:
+        fsGroup: 999 
+      containers:
+      - name: postgres
+        image: postgres:15
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: postgres-db-secrets
+              key: username
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-db-secrets
+              key: password
+        # NUEVO: Indicamos a Postgres la subcarpeta exacta de datos
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        volumeMounts:
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/data
+          # NUEVO: Esto crea y usa la subcarpeta 'pgdata' en el SSD, ignorando el 'lost+found'
+          subPath: pgdata
+      volumes:
+      - name: postgres-storage
+        persistentVolumeClaim:
+          claimName: postgres-data-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-svc
+  namespace: anami-masoterapia-prod
+spec:
+  selector:
+    app: postgres # Este imán debe coincidir con la etiqueta en tu deployment.yaml
+  ports:
+    - protocol: TCP
+      port: 5432       # El puerto que usarán tus apps para conectarse
+      targetPort: 5432 # El puerto real donde escucha PostgreSQL dentro del contenedor
