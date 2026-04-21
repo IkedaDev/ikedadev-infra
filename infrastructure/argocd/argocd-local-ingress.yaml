@@ -2,11 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: argocd-server-local-ingress
-  namespace: argocd 
+  namespace: argocd
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/service.serversscheme: https
+    # Ahora le decimos a Traefik que hable por HTTP normal con el Pod
+    traefik.ingress.kubernetes.io/service.serversscheme: http
 spec:
   rules:
   - host: argo.local
@@ -18,4 +18,4 @@ spec:
           service:
             name: argocd-server
             port:
-              number: 443
+              number: 80 # Argo en modo insecure escucha HTTP acá
