@@ -1,20 +1,14 @@
-{
-  "kind": "SealedSecret",
-  "apiVersion": "bitnami.com/v1alpha1",
-  "metadata": {
-    "name": "postgres-db-secrets",
-    "namespace": "anami-masoterapia-prod"
-  },
-  "spec": {
-    "template": {
-      "metadata": {
-        "name": "postgres-db-secrets",
-        "namespace": "anami-masoterapia-prod"
-      }
-    },
-    "encryptedData": {
-      "password": "AgAwLNu5n5g7wW+fPVoZPBi1Md/KpZG50VmQCiSImi8d9euqvsx0NCh2WRkfinJw3aioBPXagvDVxpB2qh9zVBO15Ey9Qo6sBGdLI5jvFw6hScgtiSOzVaRgupRbq1vvjTlYOSs8gItSl/f7XbUnmqASm87c7XguZr9fryPEHHyNAoE6O9Ypk63hXqMgS/vTM8PO5/uIqq7YxulX0QNI6amrErFf0OD6Q5Ba7lheCMeaIPEFycusJk15FRiNukVHrlPDM720fUlaYzPEo19Cx7SQJCyrYhWI3INNaDz+D+ZJHAfVGBJ+cGWtPMnA2Pru/rVeOeqST9dhnVzDZfyRgPdUlTGv1i/VsdsdErzTSi0QsNLZYBqzN/EHir2CFnggEdY+/LeFUjBwKU1h7bpavyHu4ZyDPcbXfWldFkFawj8DKsb7w8zgbUF1WYji50l7gtrudg582HHYjS7cprgboSAtpkhURWivLlqrgMkmgErmJDZd3eacwxswkZrbiepWUykiw+bn5gvI5B7HgFw5zJDMfdxqk3k2z3qHbz8DmiWgLVTp8l8SOWOxaaioElrZqp9IxfwAcV7YPwNacq+pir07zmhA7e+F054BHvyFJeHyP/f1aPsbKmNhXpHydQi9yjO0ymvsxEGn0tXXyZPjuDRHJ0gdD8pNiUe//rPgXXQ0ILUsX2K9TBC2J7o0aVOKAYMslze2USNfkQRb6hjY",
-      "username": "AgDXvGd3JYeZF3VAj81fkdUxEtpLpq5N+9uyqwnSiB/SUREifXCO2ba3YAetLKsea5Js5kuGW/aL238hcMFl0A4MFiDT9JhIBqcatGAHx2yWITD2uUZOTjKM0Bp4BVMU18zaHFPShZtMlj4nECLhhmFi/LPeuM31heBD0tH2y/6bfD96dRgXrODHTM55pRCWYZCrX33E0EDfGoO40z8bhxJubKeIefpD+U3yrHcFFybSDXYy/A2E74FzzjMfYmNSVhpswP8jYcmO/Q5tezcaQqTeyv6yda3r0eD4s4KMKFFPBMoAMUUzt2NNnxRxoyuXtRNQhCkTktvQLA3JvneJReZG6Pcw64+7KZxlaKUkFIB/iNlCF3Qcegy+6Ai5mCbW0rbq0L0JA9lKECR/ZiXrO7MzWwEoH8Tr8ZGeGQP7WdkjWBcXQ28wgZOrGQqGsBe9qZPsZBKFjg9gaWAeM5vNZvigUai22W4Pwgf3n4D+FR+ipG05Vwm+pobX7JWxMewKdWpG3BZ6JRNGfBZOGQLf9yFDvxmYSUTbEzDlPWUkQaE/0u/icOdSj0iqM2j0yppVC/AtC+B1qTg5ArMVBoTBo3uN35Qea2AHp/lQvc+r3ZHD9GMabotURwycf7+GHE3bSR6WwqUJ9X4lfxJ3jvwyh0NGUU21tCbtX1aLimzOT73vOVNiWdr5Y25jeod1FuDPRkIw2C2nvQ=="
-    }
-  }
-}
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: postgres-db-secrets
+  namespace: anami-masoterapia
+spec:
+  encryptedData:
+    password: AgBhfi66FZufyz+NsGXsWzaAr566c38bVdhIp98WZKTPcBbQibx43Pr3u8dDI/WAr5Jii2RiZDZqrf75N+iXsiVy1lvv8PSdy+OWMWylzWBw9S46/6lgHBM7VApH7wy9EpVdleqBg3VeWxqsx0dryHCNZ/y3eI7flGipa+PrIvdYIR6hU8G327QSXuBsf0OVEI9ck5nQhtN0aAyT3Azg0+8xKq5dxj3xYX0Uvfd+UYyWmggv7ZJNMdX668FtDz0Uc/jUL14VPwtSSuJwAMRtPoYLA6Sk3Oz8kiDJaBfNDR1qu6fQE5pYwCprg6e9cHj3naD6KzuIMZTiJw3OlS6gkaU6HK6Wo9vOLNUYKdN8349HYeSK9t9oDF9DJzKL+zofsXs0hZ3lx3OE6UHRsDl/HUkjC5a/kqBfgB29in169eWQ5MXhavozwNjHBmTlNWzkGpmNHlIFRfdObhRg3Ng3E5prE5XJqqTcjaCtRM1asKV4x5YYjj9/vgycTfDEvLtjAUCUpojmfG0LzJAZV8zFjx0m0EHQ0db5QKqzOC/Mn903rSsMJNqiBzm/mPARAa903T9BVEwMyaA2NN1rQG1949+c4vwciHzq2/FatRJlFWzz6ySni/QevSwTbM2vHGWUwqhHz5m4bZj9EQgUc4AcyBcmnPrWTu43DMNhr3Xf/ZDk3A0xQgOFP1on7RkKFCLnN+z0Ps6fbjpXTB7YIo49
+    username: AgCn9b0BEMBbMhEAIYu7+vFGwxOs75NDMdIvLNKuHiBVTGviZR1dYd9LOzjoVm/Gg6+rBeGRrtSgh6MdCl79WN7eLOog+xItcVwprkw1U+m//LYVsVylyXGe0S3zT45o0023eFW6NJXS5QdiG/bFz8FE/TjLXpVqaagZFprakEPOMoIXs+RnxdWVxwBiYhMpLNjCfn8NqlSiQF5rhvCvVnDNsWnA2IoUykrgN110RWoUSnOupYIKklg+6RMRxP6ReC3RG5TaTGPLiNSbRlSWJvFXMXRawi4jq9o2YFiXclmNfJPLDO4I/O2FPSyGBgimyNwBaYT0m90X9ifG02J69khbI7+aQ0iaVTOdHeP3rLENQteUg+OAHMu4RyxUlAX6H9qIDBzobLcmuGMMBP9WL813avdTGvKqqbFo+CSahuxRf5gwu0b1L5LgpkOgZLK58JZFz17yXQhDNZi0cyYjQbBuYOAAKko8yB9QRCQk4a4FfnRs+nv1X5cPZKmhWJSerO5TcntbGTXWgF6/7pLYcMx59V+xvH3CJTxd58sRK+zWCGXtjmsrAeaEUoredPbsSaHPbriASIaZXMF80fhqX2B1AqEM9AC5OIZYYVR3fcR3diHMC3j5+HF01EjmdFNKW6eqSmmsrwx9sRDvpTMQFJCPuwM8+wlS0kYJ/lbyKDw9Hdcn5ysdbRwn/2quxJ2Jfv6FW5osJA==
+  template:
+    metadata:
+      name: postgres-db-secrets
+      namespace: anami-masoterapia
