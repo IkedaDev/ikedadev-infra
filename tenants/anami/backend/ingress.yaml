@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - temucomasajes.cl # Tu dominio real
-    secretName: anami-api-tls
+    - api.temucomasajes.cl # Tu dominio real
+    secretName: api-temucomasajes-tls
   rules:
-  - host: temucomasajes.cl
+  - host: api.temucomasajes.cl
     http:
       paths:
       - path: /
