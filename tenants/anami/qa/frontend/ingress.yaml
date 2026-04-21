@@ -11,7 +11,6 @@ spec:
   tls:
   - hosts:
     - qa.temucomasajes.cl
-    - www.qa.temucomasajes.cl
     secretName: qa-temucomasajes-tls
   rules:
   - host: qa.temucomasajes.cl
@@ -24,5 +23,3 @@ spec:
             name: anami-frontend-svc
             port:
               number: 80
-  - host: www.qa.temucomasajes.cl
-    http: *http_rules
