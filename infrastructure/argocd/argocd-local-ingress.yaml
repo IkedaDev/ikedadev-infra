@@ -5,10 +5,10 @@ metadata:
   namespace: argocd
   annotations:
     kubernetes.io/ingress.class: traefik
-    # 1. Obligatorio: Dile a Traefik que hable por HTTPS con el Pod
+    # Indispensable: Dile a Traefik que el backend (Argo) usa HTTPS
     traefik.ingress.kubernetes.io/service.serversscheme: https
-    # 2. Obligatorio: Ignora que el certificado interno de Argo sea "feo" (auto-firmado)
-    traefik.ingress.kubernetes.io/service.nontlsbackend: "false"
+    # Indispensable: No verifiques el certificado (porque es auto-firmado)
+    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   rules:
   - host: argo.local
@@ -20,4 +20,4 @@ spec:
           service:
             name: argocd-server
             port:
-              number: 443 # El servicio que mapea al 8443 interno
+              number: 443
