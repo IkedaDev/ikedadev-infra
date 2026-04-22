@@ -5,9 +5,7 @@ metadata:
   namespace: argocd
   annotations:
     kubernetes.io/ingress.class: traefik
-    # Las anotaciones deben tener dos espacios de sangría respecto a metadata
-    traefik.ingress.kubernetes.io/service.serversscheme: https
-    traefik.ingress.kubernetes.io/service.serverstransport: kube-system-argocd-transport@kubernetescrd
+    traefik.ingress.kubernetes.io/service.serversscheme: http
     traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   rules:
@@ -20,4 +18,4 @@ spec:
           service:
             name: argocd-server
             port:
-              number: 443 # Cambiado de 80 a 443
+              number: 80 # El puerto 80 del Service mapea al 8080 del Pod
