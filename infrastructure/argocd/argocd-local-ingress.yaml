@@ -5,10 +5,9 @@ metadata:
   namespace: argocd
   annotations:
     kubernetes.io/ingress.class: traefik
-    # Indispensable: Dile a Traefik que el backend (Argo) usa HTTPS
     traefik.ingress.kubernetes.io/service.serversscheme: https
-    # Indispensable: No verifiques el certificado (porque es auto-firmado)
-    traefik.ingress.kubernetes.io/router.tls: "true"
+    # CONECTAMOS EL INGRESS CON EL TRANSPORT:
+    traefik.ingress.kubernetes.io/service.serverstransport: argocd-argocd-transport@kubernetescrd
 spec:
   rules:
   - host: argo.local
