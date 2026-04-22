@@ -5,9 +5,10 @@ metadata:
   namespace: argocd
   annotations:
     kubernetes.io/ingress.class: traefik
+    # Las anotaciones deben tener dos espacios de sangría respecto a metadata
     traefik.ingress.kubernetes.io/service.serversscheme: https
-    # Esta línea es la que mata el error 500 (asegúrate que el nombre coincida)
     traefik.ingress.kubernetes.io/service.serverstransport: argocd-argocd-transport@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   rules:
   - host: argo.local
@@ -19,4 +20,4 @@ spec:
           service:
             name: argocd-server
             port:
-              number: 443 # Obligatorio 443 para evitar el bucle de redirecciones
+              number: 443 # Cambiado de 80 a 443
