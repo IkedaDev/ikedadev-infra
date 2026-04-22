@@ -4,10 +4,10 @@ metadata:
   name: argocd-server-local-ingress
   namespace: argocd
   annotations:
-  kubernetes.io/ingress.class: traefik
-  traefik.ingress.kubernetes.io/service.serversscheme: https
-  # Prueba con este formato si el anterior falló:
-  traefik.ingress.kubernetes.io/service.serverstransport: argocd-argocd-transport@kubernetescrd
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/service.serversscheme: https
+    # Esta línea es la que mata el error 500 (asegúrate que el nombre coincida)
+    traefik.ingress.kubernetes.io/service.serverstransport: argocd-argocd-transport@kubernetescrd
 spec:
   rules:
   - host: argo.local
@@ -19,4 +19,4 @@ spec:
           service:
             name: argocd-server
             port:
-              number: 443
+              number: 443 # Obligatorio 443 para evitar el bucle de redirecciones
