@@ -5,8 +5,12 @@ metadata:
   namespace: argocd
   annotations:
     kubernetes.io/ingress.class: traefik
-    # Ahora le decimos a Traefik que hable por HTTP normal con el Pod
-    traefik.ingress.kubernetes.io/service.serversscheme: http
+  # 1. Dile a Traefik que use HTTPS para hablar con el Pod
+  traefik.ingress.kubernetes.io/service.serversscheme: https
+  # 2. Permite que Traefik acepte certificados no válidos del backend (ArgoCD)
+  traefik.ingress.kubernetes.io/service.nontlsbackend: "false" 
+  # 3. Asegura que el router local use TLS
+  traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   rules:
   - host: argo.local
@@ -18,4 +22,4 @@ spec:
           service:
             name: argocd-server
             port:
-              number: 80 # Argo en modo insecure escucha HTTP acá
+              name: https
