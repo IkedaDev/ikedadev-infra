@@ -18,7 +18,7 @@ spec:
       # Este contenedor corre ANTES que la app para actualizar la DB
       initContainers:
       - name: prisma-migrate
-        image: ikedaharket/anami-backend:2c5a4fe
+        image: ikedaharket/anami-backend:592b2a3
         command: ["npx", "prisma", "migrate", "deploy"]
         env:
         - name: DATABASE_URL
@@ -28,7 +28,7 @@ spec:
               key: database-url
       containers:
       - name: backend
-        image: ikedaharket/anami-backend:2c5a4fe
+        image: ikedaharket/anami-backend:592b2a3
         ports:
         - containerPort: 3000
         env:
