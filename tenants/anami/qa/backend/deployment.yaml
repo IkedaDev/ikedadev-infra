@@ -32,6 +32,8 @@ spec:
         ports:
         - containerPort: 3000
         env:
+        - name: NODE_ENV
+          value: qa
         - name: DATABASE_URL
           valueFrom:
             secretKeyRef:
