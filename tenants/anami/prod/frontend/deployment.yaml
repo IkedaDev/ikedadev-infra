@@ -4,6 +4,7 @@ metadata:
   name: anami-frontend
   namespace: anami-masoterapia-prod
 spec:
+  revisionHistoryLimit: 3
   replicas: 1
   selector:
     matchLabels:

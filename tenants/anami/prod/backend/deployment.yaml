@@ -4,6 +4,7 @@ metadata:
   name: anami-backend
   namespace: anami-masoterapia-prod
 spec:
+  revisionHistoryLimit: 3
   replicas: 1
   strategy:
     type: Recreate
