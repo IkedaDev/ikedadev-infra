@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: ikedaharket/kropy-api-email:latest
+        image: ikedaharket/kropy-api-email:7a46ed1
         ports:
         - containerPort: 3000
         env:
