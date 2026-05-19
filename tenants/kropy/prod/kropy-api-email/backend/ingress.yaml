@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kropy-api-email-ingress
+  namespace: kropy-prod
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/router.middlewares: kube-system-redirect-https@kubernetescrd
+spec:
+  tls:
+  - hosts:
+    - kropy-api-email.ikedadev.cl
+    secretName: kropy-api-email-ikedadev-tls
+  rules:
+  - host: kropy-api-email.ikedadev.cl
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kropy-api-email-svc
+            port:
+              number: 80

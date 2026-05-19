@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kropy-api-email
+  namespace: kropy-prod
+spec:
+  revisionHistoryLimit: 2
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: kropy-api-email
+  template:
+    metadata:
+      labels:
+        app: kropy-api-email
+    spec:
+      containers:
+      - name: backend
+        image: ikedaharket/kropy-api-email:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: production
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kropy-api-email-svc
+  namespace: kropy-prod
+spec:
+  selector:
+    app: kropy-api-email
+  ports:
+  - port: 80
+    targetPort: 3000
