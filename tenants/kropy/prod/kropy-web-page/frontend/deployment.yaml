@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kropy-web-page
+  namespace: kropy-prod
+spec:
+  revisionHistoryLimit: 2
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kropy-web-page
+  template:
+    metadata:
+      labels:
+        app: kropy-web-page
+    spec:
+      containers:
+      - name: web
+        image: ikedaharket/kropy-web-page:latest # Imagen para ARM64
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
