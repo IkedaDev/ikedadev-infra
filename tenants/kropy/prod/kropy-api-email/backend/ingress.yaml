@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - kropy-api-email.ikedadev.cl
+    - kropy-api-email.ikedadev.com
     secretName: kropy-api-email-ikedadev-tls
   rules:
-  - host: kropy-api-email.ikedadev.cl
+  - host: kropy-api-email.ikedadev.com
     http:
       paths:
       - path: /
