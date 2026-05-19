@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: ikedaharket/kropy-web-page:latest # Imagen para ARM64
+        image: ikedaharket/kropy-web-page:c513ae3
         ports:
         - containerPort: 80
         resources:
