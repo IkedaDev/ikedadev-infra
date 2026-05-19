@@ -1,0 +1,23 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: kropy-api-email-cors
+  namespace: kropy-prod  # Asegúrate de que esté en el mismo namespace que tu Ingress
+spec:
+  headers:
+    accessControlAllowMethods:
+      - "GET"
+      - "POST"
+      - "OPTIONS"
+      - "PUT"
+      - "DELETE"
+    accessControlAllowHeaders:
+      - "Content-Type"
+      - "Authorization"
+    accessControlAllowOriginList:
+      - "http://localhost:3000"
+      - "http://localhost:4321"
+      - "http://localhost:4200"
+      - "https://kropy.ikedadev.com/"
+    accessControlMaxAge: 100
+    addVaryHeader: true
