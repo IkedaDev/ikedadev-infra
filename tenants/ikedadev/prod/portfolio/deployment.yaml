@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ikeda-portfolio
-  namespace: ikedadev-apps
+  namespace: ikedadev-prod
 spec:
   revisionHistoryLimit: 3
   replicas: 1

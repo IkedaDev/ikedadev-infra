@@ -1,4 +1,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ikedadev-apps
+  name: ikedadev-prod
