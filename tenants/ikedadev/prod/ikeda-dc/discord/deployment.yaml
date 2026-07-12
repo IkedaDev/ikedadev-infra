@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ikeda-dc
+  namespace: ikedadev-prod
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: Recreate 
+  selector:
+    matchLabels:
+      app: ikeda-dc
+  template:
+    metadata:
+      labels:
+        app: ikeda-dc
+    spec:
+      containers:
+      - name: bot
+        image: ikedaharket/ikeda-dc:latest
+        imagePullPolicy: Always
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: DISCORD_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: ikeda-dc-secrets
+              key: discord-token
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "100Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
