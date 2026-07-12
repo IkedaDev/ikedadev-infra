@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: bot
-        image: ikedaharket/ikeda-dc:latest
+        image: ikedaharket/ikeda-dc:e3199cc
         imagePullPolicy: Always
         env:
         - name: NODE_ENV
