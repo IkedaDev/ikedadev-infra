@@ -23,11 +23,20 @@ spec:
         env:
         - name: NODE_ENV
           value: "production"
+        - name: CLIENT_ID
+          value: 924487116656869386
+        - name: GUILD_ID
+          value: 1279220559787458692
         - name: DISCORD_TOKEN
           valueFrom:
             secretKeyRef:
               name: ikeda-dc-secrets
               key: discord-token
+        - name: RIOT_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: ikeda-dc-secrets
+              key: riot-api-key
         resources:
           requests:
             cpu: "50m"
