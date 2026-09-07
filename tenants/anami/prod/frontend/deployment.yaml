@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: ikedaharket/anami-frontend:7eb1945
+        image: ikedaharket/anami-frontend:d6f1fdd
         ports:
         - containerPort: 80
 ---
