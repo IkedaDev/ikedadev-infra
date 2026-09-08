@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: home-assistant-ingress
+  namespace: home-assistant-prod
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+spec:
+  ingressClassName: traefik
+  tls:
+  - hosts:
+    - home.ikedadev.com # Reemplaza por el subdominio que vayas a usar
+    secretName: home-assistant-tls
+  rules:
+  - host: home.ikedadev.com # Reemplaza por el subdominio que vayas a usar
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: home-assistant-svc
+            port:
+              number: 8123
